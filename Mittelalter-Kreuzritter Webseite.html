@@ -1,150 +1,274 @@
-import React, { useState } from 'react';
-import { Sword, Shield, Book, Map, Crown } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mittelaltermarkt</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+        
+        :root {
+            --parchment: #f4e4bc;
+        }
+        
+        body {
+            background-color: #2c1810;
+            background-image: url("data:image/svg+xml,%3Csvg width='52' height='26' viewBox='0 0 52 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23442c1d' fill-opacity='0.4'%3E%3Cpath d='M10 10c0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6h2c0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4 3.314 0 6 2.686 6 6 0 2.21 1.79 4 4 4v2c-3.314 0-6-2.686-6-6 0-2.21-1.79-4-4-4-3.314 0-6-2.686-6-6zm25.464-1.95l8.486 8.486-1.414 1.414-8.486-8.486 1.414-1.414z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
 
-const MedievalKnights = () => {
-  const [activeTab, setActiveTab] = useState('overview');
+        .medieval-font {
+            font-family: 'MedievalSharp', cursive;
+        }
 
-  const tabs = {
-    overview: {
-      icon: <Crown className="w-6 h-6" />,
-      title: 'Übersicht',
-      content: (
-        <div className="prose">
-          <h2 className="text-2xl font-medieval mb-4">Das Zeitalter der Kreuzritter</h2>
-          <p className="text-gray-700">
-            Die Kreuzritter waren Ritter des Mittelalters, die zwischen dem 11. und 13. Jahrhundert 
-            an den Kreuzzügen teilnahmen. Diese militärischen Kampagnen wurden von der 
-            katholischen Kirche initiiert.
-          </p>
-        </div>
-      )
-    },
-    weapons: {
-      icon: <Sword className="w-6 h-6" />,
-      title: 'Waffen & Rüstung',
-      content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-stone-100 p-4 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Rüstung</h3>
-            <ul className="list-disc pl-5">
-              <li>Kettenhemd</li>
-              <li>Plattenrüstung</li>
-              <li>Helm mit Visier</li>
-              <li>Schild mit Wappen</li>
-            </ul>
-          </div>
-          <div className="bg-stone-100 p-4 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Waffen</h3>
-            <ul className="list-disc pl-5">
-              <li>Langschwert</li>
-              <li>Streitkolben</li>
-              <li>Lanze</li>
-              <li>Dolch</li>
-            </ul>
-          </div>
-        </div>
-      )
-    },
-    orders: {
-      icon: <Shield className="w-6 h-6" />,
-      title: 'Ritterorden',
-      content: (
-        <div className="space-y-4">
-          <div className="bg-stone-100 p-4 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Templer</h3>
-            <p>Der mächtigste und reichste aller Ritterorden, gegründet 1118.</p>
-          </div>
-          <div className="bg-stone-100 p-4 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Johanniter</h3>
-            <p>Ursprünglich ein Hospitalsorden, später auch militärisch aktiv.</p>
-          </div>
-          <div className="bg-stone-100 p-4 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Deutscher Orden</h3>
-            <p>Gegründet in Akkon, später in Osteuropa sehr einflussreich.</p>
-          </div>
-        </div>
-      )
-    },
-    battles: {
-      icon: <Map className="w-6 h-6" />,
-      title: 'Schlachten',
-      content: (
-        <div className="space-y-4">
-          <div className="bg-stone-100 p-4 rounded-lg">
-            <h3 className="text-xl font-bold">Wichtige Kreuzzugsschlachten</h3>
-            <ul className="mt-2 space-y-2">
-              <li><span className="font-bold">1099:</span> Eroberung Jerusalems</li>
-              <li><span className="font-bold">1187:</span> Schlacht bei Hattin</li>
-              <li><span className="font-bold">1191:</span> Belagerung von Akkon</li>
-            </ul>
-          </div>
-        </div>
-      )
-    },
-    culture: {
-      icon: <Book className="w-6 h-6" />,
-      title: 'Kultur',
-      content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-stone-100 p-4 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Ritterliche Tugenden</h3>
-            <ul className="list-disc pl-5">
-              <li>Tapferkeit</li>
-              <li>Treue</li>
-              <li>Ehrenhaftigkeit</li>
-              <li>Schutz der Schwachen</li>
-            </ul>
-          </div>
-          <div className="bg-stone-100 p-4 rounded-lg">
-            <h3 className="text-xl font-bold mb-2">Höfische Kultur</h3>
-            <ul className="list-disc pl-5">
-              <li>Minnesang</li>
-              <li>Turniere</li>
-              <li>Höfische Literatur</li>
-              <li>Heraldik</li>
-            </ul>
-          </div>
-        </div>
-      )
-    }
-  };
+        .parchment {
+            background-color: var(--parchment);
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            border: 8px solid #654321;
+            border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='75' height='75'%3E%3Cpath fill='%23654321' d='M0 0h75v75H0z'/%3E%3Cpath fill='%23987654' d='M15 15h45v45H15z'/%3E%3C/svg%3E") 20;
+        }
 
-  return (
-    <div className="max-w-4xl mx-auto p-6 bg-white">
-      {/* Hero Section */}
-      <div className="relative h-64 mb-8 bg-stone-800 rounded-lg overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-900 to-transparent" />
-        <div className="relative z-10 h-full flex items-center px-8">
-          <h1 className="text-4xl font-bold text-white">
-            Mittelalter & Kreuzritter
-          </h1>
+        .ornate-border {
+            position: relative;
+            border: 2px solid #654321;
+        }
+
+        .ornate-border::before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid #987654;
+            pointer-events: none;
+            background: 
+                linear-gradient(45deg, transparent 45%, #654321 45%, #654321 55%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, #654321 45%, #654321 55%, transparent 55%);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 0;
+            opacity: 0.3;
+        }
+
+        .hero-section {
+            background-image: url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .medieval-button {
+            background-color: #8B4513;
+            border: 2px solid #654321;
+            color: var(--parchment);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .medieval-button:hover {
+            background-color: #654321;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            position: relative;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: "⚔️";
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .section-title::before {
+            left: 20px;
+        }
+
+        .section-title::after {
+            right: 20px;
+        }
+
+        .scroll-decoration {
+            position: absolute;
+            width: 50px;
+            height: 100%;
+            top: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50'%3E%3Cpath fill='%23654321' d='M0 0c27.614 0 50 22.386 50 50 0-27.614 22.386-50 50-50-27.614 0-50-22.386-50-50 0 27.614-22.386 50-50 50z'/%3E%3C/svg%3E");
+            background-repeat: repeat-y;
+            opacity: 0.1;
+        }
+
+        .scroll-decoration-left {
+            left: 0;
+        }
+
+        .scroll-decoration-right {
+            right: 0;
+            transform: scaleX(-1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-gradient-to-r from-yellow-900 to-yellow-800 text-yellow-100 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-3xl medieval-font">Mittelaltermarkt</h1>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#programm" class="medieval-button">Programm</a>
+                <a href="#haendler" class="medieval-button">Händler</a>
+                <a href="#kontakt" class="medieval-button">Kontakt</a>
+            </div>
         </div>
-      </div>
+    </nav>
 
-      {/* Navigation Tabs */}
-      <div className="flex flex-wrap gap-2 mb-6">
-        {Object.entries(tabs).map(([key, tab]) => (
-          <button
-            key={key}
-            onClick={() => setActiveTab(key)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg transition ${
-              activeTab === key
-                ? 'bg-stone-800 text-white'
-                : 'bg-stone-100 hover:bg-stone-200'
-            }`}
-          >
-            {tab.icon}
-            {tab.title}
-          </button>
-        ))}
-      </div>
+    <main class="container mx-auto p-4">
+        <!-- Hero Section -->
+        <div class="hero-section h-96 rounded-lg mb-8 relative flex items-center justify-center">
+            <div class="scroll-decoration scroll-decoration-left"></div>
+            <div class="scroll-decoration scroll-decoration-right"></div>
+            <div class="text-center relative z-10">
+                <h2 class="text-5xl medieval-font text-yellow-100 mb-4">Willkommen auf dem Mittelaltermarkt</h2>
+                <p class="text-xl text-yellow-100">Eine Reise in vergangene Zeiten</p>
+            </div>
+        </div>
 
-      {/* Content Area */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
-        {tabs[activeTab].content}
-      </div>
-    </div>
-  );
-};
+        <!-- Main Content -->
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Marktinfo -->
+            <section class="parchment p-6 rounded-lg">
+                <h3 class="section-title text-2xl medieval-font text-yellow-900 mb-6">Marktinformationen</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🗓️</span>
+                        <div>
+                            <h4 class="font-bold">Öffnungszeiten</h4>
+                            <p>Fr-So, 10:00-20:00 Uhr</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">📍</span>
+                        <div>
+                            <h4 class="font-bold">Standort</h4>
+                            <p>Burgplatz 1, 12345 Mittelstadt</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🎫</span>
+                        <div>
+                            <h4 class="font-bold">Eintritt</h4>
+                            <p>Erwachsene 8€, Kinder 4€</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-export default MedievalKnights;
+            <!-- Programm -->
+            <section id="programm" class="parchment p-6 rounded-lg">
+                <h3 class="section-title text-2xl medieval-font text-yellow-900 mb-6">Programm-Highlights</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="ornate-border p-4">
+                        <h4 class="font-bold flex items-center">
+                            <span class="text-2xl mr-2">⚔️</span>
+                            Ritterturnier
+                        </h4>
+                        <p>Täglich 14:00 Uhr</p>
+                    </div>
+                    <div class="ornate-border p-4">
+                        <h4 class="font-bold flex items-center">
+                            <span class="text-2xl mr-2">🎭</span>
+                            Gaukler
+                        </h4>
+                        <p>Durchgehend</p>
+                    </div>
+                    <div class="ornate-border p-4">
+                        <h4 class="font-bold flex items-center">
+                            <span class="text-2xl mr-2">🏹</span>
+                            Bogenschießen
+                        </h4>
+                        <p>Für Besucher</p>
+                    </div>
+                    <div class="ornate-border p-4">
+                        <h4 class="font-bold flex items-center">
+                            <span class="text-2xl mr-2">🎵</span>
+                            Musik
+                        </h4>
+                        <p>Mittelalterliche Klänge</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Händler -->
+            <section id="haendler" class="parchment p-6 rounded-lg md:col-span-2">
+                <h3 class="section-title text-2xl medieval-font text-yellow-900 mb-6">Händler & Handwerk</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="ornate-border p-4">
+                        <h4 class="font-bold text-center mb-2">⚒️ Schmied</h4>
+                        <p class="text-center">Live-Vorführungen</p>
+                    </div>
+                    <div class="ornate-border p-4">
+                        <h4 class="font-bold text-center mb-2">🧵 Gewandungen</h4>
+                        <p class="text-center">Historische Kleidung</p>
+                    </div>
+                    <div class="ornate-border p-4">
+                        <h4 class="font-bold text-center mb-2">🍺 Getränke</h4>
+                        <p class="text-center">Met & Traditionelles</p>
+                    </div>
+                    <div class="ornate-border p-4">
+                        <h4 class="font-bold text-center mb-2">🍖 Speisen</h4>
+                        <p class="text-center">Mittelalterliche Küche</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Kontakt -->
+        <section id="kontakt" class="parchment p-6 rounded-lg mt-8">
+            <h3 class="section-title text-2xl medieval-font text-yellow-900 mb-6">Kontakt & Anfahrt</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h4 class="font-bold mb-2">Kontakt</h4>
+                    <p>📧 info@mittelaltermarkt.de</p>
+                    <p>📞 0123-456789</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-2">Anfahrt</h4>
+                    <p>🚗 Kostenlose Parkplätze vorhanden</p>
+                    <p>🚍 Buslinie 123, Haltestelle "Burgplatz"</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gradient-to-r from-yellow-900 to-yellow-800 text-yellow-100 mt-8 py-6">
+        <div class="container mx-auto text-center">
+            <p class="medieval-font">&copy; 2024 Mittelaltermarkt - Alle Rechte vorbehalten</p>
+        </div>
+    </footer>
+</body>
+</html>
