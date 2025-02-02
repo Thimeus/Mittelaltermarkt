@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mittelalter & Kreuzritter</title>
+    <style>
+        /* Tailwind CSS base styles (simplified for demonstration) */
+        body { font-family: sans-serif; margin: 0; background-color: #f3f4f6; }
+        .max-w-4xl { max-width: 56rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .p-6 { padding: 1.5rem; }
+        .bg-white { background-color: #ffffff; }
+        .relative { position: relative; }
+        .h-64 { height: 16rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .bg-stone-800 { background-color: #292524; }
+        .rounded-lg { border-radius: 0.5rem; }
+        .overflow-hidden { overflow: hidden; }
+        .absolute { position: absolute; }
+        .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+        .bg-gradient-to-r { background-image: linear-gradient(to right, #0c0a09, transparent); }
+        .z-10 { z-index: 10; }
+        .flex { display: flex; }
+        .items-center { align-items: center; }
+        .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+        .font-bold { font-weight: 700; }
+        .text-white { color: #ffffff; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .flex-wrap { flex-wrap: wrap; }
+        .gap-2 { gap: 0.5rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+        .transition { transition-property: background-color, color, border-color; transition-duration: 200ms; }
+        .bg-stone-100 { background-color: #f5f5f4; }
+        .hover\:bg-stone-200:hover { background-color: #e7e5e4; }
+        .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+        .border { border-width: 1px; }
+        .border-stone-200 { border-color: #e4e4e7; }
+        .prose h2 { font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem; }
+        .prose p { color: #4b5563; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .gap-4 { gap: 1rem; }
+        .bg-stone-100 { background-color: #f5f5f4; }
+        .p-4 { padding: 1rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .list-disc { list-style-type: disc; }
+        .pl-5 { padding-left: 1.25rem; }
+        .space-y-4 > * + * { margin-top: 1rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+          /* Medieval Font */
+        .font-medieval { font-family: 'MedievalSharp', cursive; }
+        @import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+    </style>
+</head>
+<body>
+    <div class="max-w-4xl mx-auto p-6 bg-white">
+        
+        <div class="relative h-64 mb-8 bg-stone-800 rounded-lg overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-stone-900 to-transparent"></div>
+            <div class="relative z-10 h-full flex items-center px-8">
+              <h1 class="text-4xl font-bold text-white font-medieval">
+                Mittelalter & Kreuzritter
+              </h1>
+            </div>
+        </div>
+
+      
+        <div class="flex flex-wrap gap-2 mb-6">
+            <button onclick="setActiveTab('overview')" class="flex items-center gap-2 px-4 py-2 rounded-lg transition bg-stone-800 text-white" id="overview-tab">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+                Übersicht
+            </button>
+            <button onclick="setActiveTab('weapons')" class="flex items-center gap-2 px-4 py-2 rounded-lg transition bg-stone-100 hover:bg-stone-200" id="weapons-tab">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M12 2L10 7h4L12 2zM6 10h12L18 22H6z"></path></svg>
+                Waffen & Rüstung
+            </button>
+            <button onclick="setActiveTab('orders')" class="flex items-center gap-2 px-4 py-2 rounded-lg transition bg-stone-100 hover:bg-stone-200" id="orders-tab">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M5 3l4 1 1 3 6 1 1-3 4-1-2 7-3 1 0 4-4 3-2 1-2-7zM5 3v18"></path></svg>
+                Ritterorden
+            </button>
+            <button onclick="setActiveTab('battles')" class="flex items-center gap-2 px-4 py-2 rounded-lg transition bg-stone-100 hover:bg-stone-200" id="battles-tab">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><polygon points="3 6 5 6 12 18 19 6 21 6 12 2 3 6"></polygon></svg>
+                Schlachten
+            </button>
+            <button onclick="setActiveTab('culture')" class="flex items-center gap-2 px-4 py-2 rounded-lg transition bg-stone-100 hover:bg-stone-200" id="culture-tab">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17h11A2.5 2.5 0 0 1 20 19.5v-15A2.5 2.5 0 0 0 17.5 2H6.5A2.5 2.5 0 0 0 4 4.5v15z"></path><line x1="7.5" y1="6" x2="16.5" y2="6"></line><line x1="7.5" y1="11" x2="16.5" y2="11"></line></svg>
+                Kultur
+            </button>
+        </div>
+
+        
+        <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200" id="content-area">
+            <div class="prose">
+                <h2 class="text-2xl font-medieval mb-4">Das Zeitalter der Kreuzritter</h2>
+                <p class="text-gray-700">
+                  Die Kreuzritter waren Ritter des Mittelalters, die zwischen dem 11. und 13. Jahrhundert 
+                  an den Kreuzzügen teilnahmen. Diese militärischen Kampagnen wurden von der 
+                  katholischen Kirche initiiert.
+                </p>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        const tabs = {
+            overview: {
+              content: `
+              <div class="prose">
+                  <h2 class="text-2xl font-medieval mb-4">Das Zeitalter der Kreuzritter</h2>
+                  <p class="text-gray-700">
+                    Die Kreuzritter waren Ritter des Mittelalters, die zwischen dem 11. und 13. Jahrhundert 
+                    an den Kreuzzügen teilnahmen. Diese militärischen Kampagnen wurden von der 
+                    katholischen Kirche initiiert.
+                  </p>
+                </div>
+              `
+            },
+            weapons: {
+              content: `
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-stone-100 p-4 rounded-lg">
+                  <h3 class="text-xl font-bold mb-2">Rüstung</h3>
+                  <ul class="list-disc pl-5">
+                    <li>Kettenhemd</li>
+                    <li>Plattenrüstung</li>
+                    <li>Helm mit Visier</li>
+                    <li>Schild mit Wappen</li>
+                  </ul>
+                </div>
+                <div class="bg-stone-100 p-4 rounded-lg">
+                  <h3 class="text-xl font-bold mb-2">Waffen</h3>
+                  <ul class="list-disc pl-5">
+                    <li>Langschwert</li>
+                    <li>Streitkolben</li>
+                    <li>Lanze</li>
+                    <li>Dolch</li>
+                  </ul>
+                </div>
+              </div>
+            `
+            },
+            orders: {
+              content: `
+              <div class="space-y-4">
+                <div class="bg-stone-100 p-4 rounded-lg">
+                  <h3 class="text-xl font-bold mb-2">Templer</h3>
+                  <p>Der mächtigste und reichste aller Ritterorden, gegründet 1118.</p>
+                </div>
+                <div class="bg-stone-100 p-4 rounded-lg">
+                  <h3 class="text-xl font-bold mb-2">Johanniter</h3>
+                  <p>Ursprünglich ein Hospitalsorden, später auch militärisch aktiv.</p>
+                </div>
+                <div class="bg-stone-100 p-4 rounded-lg">
+                  <h3 class="text-xl font-bold mb-2">Deutscher Orden</h3>
+                  <p>Gegründet in Akkon, später in Osteuropa sehr einflussreich.</p>
+                </div>
+              </div>
+            `
+            },
+            battles: {
+              content: `
+              <div class="space-y-4">
+              <div class="bg-stone-100 p-4 rounded-lg">
+                <h3 class="text-xl font-bold">Wichtige Kreuzzugsschlachten</h3>
+                <ul class="mt-2 space-y-2">
+                  <li><span class="font-bold">1099:</span> Eroberung Jerusalems</li>
+                  <li><span class="font-bold">1187:</span> Schlacht bei Hattin</li>
+                  <li><span class="font-bold">1191:</span> Belagerung von Akkon</li>
+                </ul>
+              </div>
+            </div>
+            `
+            },
+            culture: {
+              content: `
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-stone-100 p-4 rounded-lg">
+                  <h3 class="text-xl font-bold mb-2">Ritterliche Tugenden</h3>
+                  <ul class="list-disc pl-5">
+                    <li>Tapferkeit</li>
+                    <li>Treue</li>
+                    <li>Ehrenhaftigkeit</li>
+                    <li>Schutz der Schwachen</li>
+                  </ul>
+                </div>
+                <div class="bg-stone-100 p-4 rounded-lg">
+                  <h3 class="text-xl font-bold mb-2">Höfische Kultur</h3>
+                  <ul class="list-disc pl-5">
+                    <li>Minnesang</li>
+                    <li>Turniere</li>
+                    <li>Höfische Literatur</li>
+                    <li>Heraldik</li>
+                  </ul>
+                </div>
+              </div>
+            `
+            }
+          };
+
+          let activeTab = 'overview';
+          document.getElementById('content-area').innerHTML = tabs[activeTab].content;
+
+
+          function setActiveTab(tabName) {
+            document.getElementById(`${activeTab}-tab`).classList.remove('bg-stone-800', 'text-white');
+            document.getElementById(`${activeTab}-tab`).classList.add('bg-stone-100','hover:bg-stone-200');
+
+            activeTab = tabName;
+            document.getElementById('content-area').innerHTML = tabs[activeTab].content;
+            document.getElementById(`${activeTab}-tab`).classList.remove('bg-stone-100','hover:bg-stone-200');
+            document.getElementById(`${activeTab}-tab`).classList.add('bg-stone-800', 'text-white');
+          }
+    </script>
+</body>
+</html>
